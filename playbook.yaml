@@ -1,0 +1,17 @@
+---
+- name: Copy File from GitHub to Local
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: Ensure git is installed
+      apt:
+        name: git
+        state: present
+
+    - name: Clone GitHub Repository
+      git:
+        repo: 'https://github.com/Lellasubhasri/html.git'
+        dest: /tmp/my_repo  
+        version: main
